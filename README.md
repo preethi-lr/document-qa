@@ -16,20 +16,42 @@ This project is a document-based Question & Answering system developed as part o
 
 ## 🛠️ Tech Stack
 
-| Tool | Purpose |
-|------|---------|
-| **Node.js** | Backend runtime |
-| **TypeScript** | Type safety |
-| **Express.js** | API routing |
-| **Multer** | PDF upload |
-| **pdf-parse** | PDF text extraction |
-| **OpenAI API** | Embeddings + GPT-based Q&A |
-| **Vercel AI SDK** | LLM interaction |
-| **Odrant** | Vector DB for storing and querying embeddings |
+| Tool              | Purpose                                |
+|-------------------|----------------------------------------|
+| **Node.js**       | Backend runtime                        |
+| **TypeScript**    | Type safety                            |
+| **Express.js**    | API routing                            |
+| **Multer**        | PDF upload handling                    |
+| **pdf-parse**     | PDF text extraction                    |
+| **OpenAI API**    | Embeddings + GPT-based Q&A             |
+| **Vercel AI SDK** | LLM interaction                        |
+| **Odrant**        | Vector DB for storing and querying     |
 
 ---
 
-## 📁 Project Structure
+## 📁 Project Setup
+
+### 1. Install Dependencies
+
+```bash
+npm install
+
+**### 2. Create .env File**
+
+OPENAI_API_KEY=your_openai_api_key
+ODRANT_API_KEY=your_odrant_api_key
+ODRANT_INDEX_NAME=your_index_name
+
+### 3.Run the Server
+
+```bash
+npx ts-node src/server.ts
+
+Server runs at: http://localhost:3000
+
+
+
+
 
 
 
