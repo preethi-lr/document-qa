@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document QA</title>
+</head>
+<body>
+  <h1>Upload PDF and Ask Questions</h1>
+
+  <!-- Upload PDF Section -->
+  <input type="file" id="pdfFile" />
+  <button onclick="uploadPdf()">Upload PDF</button>
+
+  <br/><br/>
+
+  <!-- Ask Question Section -->
+  <input type="text" id="question" placeholder="Ask your question..." style="width: 300px;" />
+  <button onclick="askQuestion()">Ask Question</button>
+
+  <br/><br/>
+  <p id="response"></p>
+
+  <script>
+    async function uploadPdf() {
+      const fileInput = document.getElementById('pdfFile');
+      const formData = new FormData();
+      formData.append('file', fileInput.files[0]);
+
+      const res = await fetch('http://localhost:3000/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const result = await res.json();
+      alert('Uploaded successfully!');
+      console.log(result);
+    }
+
+    async function askQuestion() {
+      const question = document.getElementById('question').value;
+
+      const res = await fetch('http://localhost:3000/ask', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question }),
+      });
+
+      const data = await res.json();
+      document.getElementById('response').innerText = `Answer: ${data.answer}`;
+    }
+  </script>
+</body>
+</html>
